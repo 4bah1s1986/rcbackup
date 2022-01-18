@@ -20,7 +20,7 @@ Untuk keselamatan fail backup yang dibuat, folder yang digunakan untuk menyimpan
 		web1.conf
 		web2.conf
 
-**Folder 'config'**
+**Fail 'config'**
 Perlu disediakan dengan membuat salinan fail config.sample
 
 **Folder 'setbackup'**
