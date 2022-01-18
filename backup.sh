@@ -20,13 +20,12 @@ for i in $(ls -1 *.conf);do
 	mkdir -p $BACKUP_DIR/$WEB_FOLDER;
 	OUTPUT=${BACKUP_PREFIX}${WEB_FOLDER}${BACKUP_SUFFIX};
 	
-	cd /home/$SYSTEM_USER/webapps;
-	
 	if [ $LOCAL_DB = 1 ];then
 		mysqldump $DB_NAME > $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.sql
 	else
 		mysqldump -h $DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME > $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.sql
 	fi
 	
-	tar zhcvf $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.tgz $WEB_FOLDER/		
+	cd /home/$SYSTEM_USER/webapps;
+	tar zcvf $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.tgz $WEB_FOLDER/		
 done
