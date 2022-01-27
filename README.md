@@ -28,7 +28,6 @@ Fail 'web1.conf' dan 'web2.conf' hanyalah contoh. Fail dengan sambungan '.conf' 
 
 ## Kandungan fail 'config'
 
-    SCRIPT_FOLDER=/opt/script/rcbackup
     BACKUP_DIR=/backup
     SAVE_BACKUP_DURATION=3
     BACKUP_PREFIX="RC-"
