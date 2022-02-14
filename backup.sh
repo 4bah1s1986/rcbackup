@@ -8,15 +8,16 @@ source $BASEDIR/config
 find $BACKUP_DIR/ -iname "$BACKUP_PREFIX*.tgz" -mtime +$SAVE_BACKUP_DURATION -exec rm -rf {} \;
 
 cd $BASEDIR/setbackup;
+BACKUPCONF_PATH=${PWD};
 
 for i in $(ls -1 *.conf);do
-	SYSTEM_USER=$(head -n 1 $BASEDIR/setbackup/$i);
-	WEB_FOLDER=$(head -n 2 $BASEDIR/setbackup/$i|tail -n 1);
-	LOCAL_DB=$(head -n 3 $BASEDIR/setbackup/$i|tail -n 1);
-	DB_NAME=$(head -n 4 $BASEDIR/setbackup/$i|tail -n 1);	
-	DB_HOST=$(head -n 5 $BASEDIR/setbackup/$i|tail -n 1);
-	DB_USER=$(head -n 6 $BASEDIR/setbackup/$i|tail -n 1);
-	DB_PASS=$(head -n 7 $BASEDIR/setbackup/$i|tail -n 1);
+	SYSTEM_USER=$(head -n 1 $i);
+	WEB_FOLDER=$(head -n 2 $i|tail -n 1);
+	LOCAL_DB=$(head -n 3 $i|tail -n 1);
+	DB_NAME=$(head -n 4 $i|tail -n 1);	
+	DB_HOST=$(head -n 5 $i|tail -n 1);
+	DB_USER=$(head -n 6 $i|tail -n 1);
+	DB_PASS=$(head -n 7 $i|tail -n 1);
 	
 	mkdir -p $BACKUP_DIR/$WEB_FOLDER;
 	OUTPUT=${BACKUP_PREFIX}${WEB_FOLDER}${BACKUP_SUFFIX};
@@ -28,5 +29,7 @@ for i in $(ls -1 *.conf);do
 	fi
 	
 	cd /home/$SYSTEM_USER/webapps;
-	tar zcvf $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.tgz $WEB_FOLDER/		
+	tar zcvf $BACKUP_DIR/$WEB_FOLDER/$OUTPUT.tgz $WEB_FOLDER/
+	
+	cd $BACKUPCONF_PATH;
 done
