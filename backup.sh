@@ -5,7 +5,7 @@
 BASEDIR=$(dirname "$0")
 source $BASEDIR/config
 
-find $BACKUP_DIR/ -iname "$BACKUP_PREFIX-*.tgz" -mtime +$SAVE_BACKUP_DURATION -exec rm -rf {} \;
+find $BACKUP_DIR/ -iname "$BACKUP_PREFIX*.tgz" -mtime +$SAVE_BACKUP_DURATION -exec rm -rf {} \;
 
 cd $BASEDIR/setbackup;
 
