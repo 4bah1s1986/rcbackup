@@ -1,4 +1,4 @@
-## Konfigurasi backup lama web
+## Konfigurasi backup laman web
 ## Sila sediakan fail konfigurasi bagi setiap web dengan menyalin fail sample.conf.sample
 
 ## Nama linux user. Sama dengan nama home directory. Contohnya user 'user1' dengan home directory '/home/user1' 
