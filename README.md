@@ -13,65 +13,26 @@ Untuk keselamatan fail backup yang dibuat, folder yang digunakan untuk menyimpan
 
 ## Struktur fail dan folder
 
-    backup.sh
-	config
-	config.sample
-	setbackup/
-		web1.conf
-		web2.conf
+Skrip terdiri dari :-
 
-**Fail 'config'**
-Perlu disediakan dengan membuat salinan fail config.sample
+ - Satu executable script bernama 'backup.sh'
+ - Fail konfigurasi utama bernama '**config**' yang perlu disediakan dari config.sample
+ - Fail konfigurasi bagi setiap laman web yang mahu di backup (**Format .conf**). Fail konfigurasi perlu disediakan dengan menyalin/merujuk fail 'sample.conf.sample' di dalam **folder 'setbackup'.**
 
-**Folder 'setbackup'**
-Fail 'web1.conf' dan 'web2.conf' hanyalah contoh. Fail dengan sambungan '.conf' perlu disediakan dengan tetapan yang betul bagi web yang mahu dimasukkan dalam backup. 
+## Kandungan fail konfigurasi
 
-## Kandungan fail 'config'
+### Fail 'config'
 
     BACKUP_DIR=/backup
     SAVE_BACKUP_DURATION=3
     BACKUP_PREFIX="RC-"
     BACKUP_SUFFIX=$(date +%Y%m%d%H%M)
  
-Konfigurasi di asingkan dari fail utama agar kod mudah diuruskan menggunakan git dan juga diubah berdasarkan keperluan.
+### Fail dengan format '.conf' di dalam folder 'setbackup'
 
-## Kandungan folder 'setbackup'
+Rujuk 'setbackup/sample.conf.sample'
 
-Setiap folder web yang mahu di backup perlu dimasukkan dalam fail dengan sambungan '.conf' yang berlainan. Ia perlu dibuat berdasarkan dua keadaan berikut :-
-
- **Jika web menggunakan database dalam server yang sama**
-  
-     contohuser
-     webfolder
-     1
-     dbname
-
-Contoh :- Fail web-client1.conf
-
-     client1
-     web-client1
-     1
-     client-agensi1
-
- **Jika web menggunakan database dalam server yang berbeza**
-
-    contohuser
-    webfolder
-    0
-    dbname
-    dbhost
-    dbuser
-    dbpassword
-
-Contoh :- Fail web-client2.conf
-
-    client2
-    web-client2
-    0
-    web-client2
-    dbserver.sekian.sekian
-    client2-usr
-    p@ssworddbblabla
+Terdapat pilihan konfigurasi untuk menyokong keadaan samaada laman web menggunakan database local ataupun remote.
  
 ## Cron - Jalankan backup secara automatik
 
