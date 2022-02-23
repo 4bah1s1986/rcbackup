@@ -1,0 +1,19 @@
+## Konfigurasi backup laman web
+## Sila sediakan fail konfigurasi bagi setiap web dengan menyalin fail sample.conf.sample
+
+## Nama linux user. Sama dengan nama home directory. Contohnya user 'user1' dengan home directory '/home/user1' 
+SYSTEM_USER=user1
+
+## Folder laman web contohnya 'app-contoh1' di dalam '/home/user1/webapps'
+WEB_FOLDER=app-contoh1
+
+## Adakah database di dalam server yang sama. Isi 1 untuk ya dan 0 untuk tidak
+LOCAL_DB=1
+
+## Nama database yang digunakan oleh laman web
+DB_NAME=contoh1
+
+## DB Host, User dan Password. Bahagian ini tidak akan dibaca jika LOCAL_DB=1
+DB_HOST=
+DB_USER=
+DB_PASS=
